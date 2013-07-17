@@ -4,8 +4,8 @@
 {% block content %}
 <h2>Events <a href="/events/new/"><button>+</button></a></h2>
 
-<div class="row-fluid">
 {% for event in object_list %}
+<div class="row-fluid">
 <div class="span4">
     <img class="logo img-polaroid" src="{{ event.logo.url }}"/>
 </div>
@@ -14,7 +14,7 @@
 
 <h2 class="center-text">{{ event.title }}
 <a href="/events/{{ event.id }}/add/"><input type="button" value="{% trans 'Add participant' %}" style='display:inline;'/></a>
-<form action="/events/delete/{{ event.id }}/"
+<form action="/events/{{ event.id }}/delete/"
       method="POST"
       style='display:inline;'>{% csrf_token %}
       <input type="submit" value="{% trans 'delete' %}" style='display:inline;'/>
@@ -28,15 +28,22 @@
 </p>
 {% trans "Participants:" %}
 <ul>
-    {% for participant in event.participants %}
-        <li>{{ participant.name }}</li>
+    {% for participant in event.participants.all %}
+    <li><a href="/events/{{ event.id }}/participant/{{ participant.id }}/pdf/">PDF</a>
+        {{ participant.username }}: <i>{{ participant.topic}}</i>
+        <form action="/events/{{ event.id }}/participant/{{ participant.id }}/delete/"
+                                method="POST" style='display:inline;'>{% csrf_token %}
+            <input type="submit" value="{% trans 'X' %}" style='display:inline;'/>
+        </form>
+    </li>
     {% endfor %}
 </ul>
 
 </div>
 
-{% endfor %}
 </div>
+</br>
+{% endfor %}
 
 
 {% endblock %}
