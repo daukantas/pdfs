@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<h2>Events <a href="/events/new/"><button>+</button></a></h2>
+
+<div class="row-fluid">
+{% for event in object_list %}
+<div class="span4">
+    <img class="logo img-polaroid" src="{{ event.logo.url }}"/>
+</div>
+
+<div class="span8">
+
+<h2 class="center-text">{{ event.title }}
+<a href="/events/{{ event.id }}/add/"><input type="button" value="{% trans 'Add participant' %}" style='display:inline;'/></a>
+<form action="/events/delete/{{ event.id }}/"
+      method="POST"
+      style='display:inline;'>{% csrf_token %}
+      <input type="submit" value="{% trans 'delete' %}" style='display:inline;'/>
+</form>
+</h2>
+<h4 class="center-text">
+{{ event.moto}}
+</h4>
+<p>
+{{ event.description}}
+</p>
+{% trans "Participants:" %}
+<ul>
+    {% for participant in event.participants %}
+        <li>{{ participant.name }}</li>
+    {% endfor %}
+</ul>
+
+</div>
+
+{% endfor %}
+</div>
+
+
+{% endblock %}

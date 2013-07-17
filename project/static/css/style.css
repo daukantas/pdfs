@@ -20,6 +20,14 @@ body {
     float:none !important;
 }
 
+.logo {
+    max-width: 200px;
+}
+
+.center-text {
+    text-align: center;
+}
+
 
 /* ---- Footer ---- */
 .footer {
