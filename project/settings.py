@@ -91,7 +91,10 @@ STATICFILES_FINDERS = (
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'z=o)$(oc@f3#@+-0rq53oz%a-4xc1b95l_^!l$x(u%!zw+(%u#'
 
+# Django debug toolbar settings
 INTERNAL_IPS = ('127.0.0.1','109.235.71.194')
+
+INTERCEPT_REDIRECTS = False
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
