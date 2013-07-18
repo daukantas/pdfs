@@ -164,4 +164,4 @@ LOGGING = {
 }
 
 
-FONTS_DIR = os.path.join(BUILDOUT_DIR, 'parts', 'fonts', 'ubuntu-font-family-0.80')
+FONTS_DIR = os.path.join(PROJECT_DIR, 'static', 'fonts', 'ubuntu-font-family-0.80')
