@@ -1,0 +1,42 @@
+<html>
+<head>
+<style>
+    @page {
+        size: a4 portrait; 
+        @frame header_frame {
+            -pdf-frame-content: header_content; 
+            -pdf-frame-border: 1;
+            left: 10pt; width: 512pt; top: 20pt; height: 90pt;
+        }
+        @frame content_frame {
+            -pdf-frame-content: main_content; 
+            left: 10pt; width: 512pt; top: 140pt; height: 455pt;
+            -pdf-frame-border: 1;
+        }
+        @frame footer_frame {
+            -pdf-frame-content: footer_content;
+            left: 10pt; width: 512pt; top: 752pt; height: 20pt;
+            -pdf-frame-border: 1;
+        }
+    }
+    .center-text {
+        text-align: center;
+    }
+</style>
+
+</head>
+
+<body>
+    <div id="header_content" class="center-text" >
+        <img src="http://127.0.0.1:8000{{ event.logo.url }}">
+        </div>
+
+
+    <div id="footer_content">Our sponsor logos</div>
+
+    <div id="main_content">
+        {{ participant.username }}
+        <i>{{ participant.topic }}</i>
+    </div>
+</body>
+</html>
