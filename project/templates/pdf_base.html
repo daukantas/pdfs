@@ -2,6 +2,40 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style>
+    /* Normal */
+    @font-face {
+       font-family: Ubuntu;
+       src: url({{ FONTS_DIR }}/Ubuntu-R.ttf);
+    }
+
+    /* Bold */
+    @font-face {
+       font-family: Ubuntu;
+       src: url({{ FONTS_DIR }}/Ubuntu-B.ttf);
+       font-weight: bold;
+    }
+
+    /* Italic */
+    @font-face {
+       font-family: Ubuntu;
+       src: url({{ FONTS_DIR }}/Ubuntu-RI.ttf);
+       font-style: italic;
+    }
+
+    /* Bold and italic */
+    @font-face {
+       font-family: Ubuntu;
+       src: url({{ FONTS_DIR }}/Ubuntu-BI.ttf);
+       font-weight: bold;
+       font-style: italic;
+    }
+
+    body {
+        font-family: Ubuntu;
+        font-size: 11px;
+    }
+
+
     @page {
         size: a4 portrait; 
         @frame header_frame {
@@ -22,7 +56,6 @@
     }
     .center-text {
         text-align: center;
-        font-family: helvetica, arial;
     }
 </style>
 
