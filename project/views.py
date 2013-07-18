@@ -12,6 +12,7 @@ from django.template.loader import get_template
 from django.template import Context
 from django.http import HttpResponse
 from cgi import escape
+import settings
 
 
 def index(request):
@@ -50,11 +51,18 @@ class Certificate(View):
 
         template = get_template('project/certificate.html')
         context = Context(context_dict)
+        context.update({
+            'FONTS_DIR': settings.FONTS_DIR,
+        })
 
         html  = template.render(context)
-        result = StringIO.StringIO()
 
-        pdf = pisa.pisaDocument(StringIO.StringIO(html.encode("ISO-8859-1")), result)
+        input_ = StringIO.StringIO(html.encode("UTF-8"))
+        file_ = StringIO.StringIO()
+        pdf = pisa.pisaDocument(input_, file_)
+
         if not pdf.err:
-            return HttpResponse(result.getvalue(), mimetype='application/pdf')
+            return HttpResponse(file_.getvalue(), mimetype='application/pdf')
         return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))
+
+

@@ -162,3 +162,6 @@ LOGGING = {
         },
     }
 }
+
+
+FONTS_DIR = os.path.join(BUILDOUT_DIR, 'parts', 'fonts', 'ubuntu-font-family-0.80')
