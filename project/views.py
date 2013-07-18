@@ -54,7 +54,7 @@ class Certificate(View):
         html  = template.render(context)
         result = StringIO.StringIO()
 
-        pdf = pisa.pisaDocument(StringIO.StringIO(html.encode("ISO-8859-1")), result)
+        pdf = pisa.pisaDocument(StringIO.StringIO(html.encode('utf-8')), result)
         if not pdf.err:
             return HttpResponse(result.getvalue(), mimetype='application/pdf')
         return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))

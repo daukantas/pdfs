@@ -1,5 +1,6 @@
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style>
     @page {
         size: a4 portrait; 
@@ -21,6 +22,7 @@
     }
     .center-text {
         text-align: center;
+        font-family: helvetica, arial;
     }
 </style>
 
@@ -34,7 +36,7 @@
 
     <div id="footer_content">Our sponsor logos</div>
 
-    <div id="main_content">
+    <div id="main_content" class="center-text">
         {{ participant.username }}
         <i>{{ participant.topic }}</i>
     </div>
