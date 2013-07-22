@@ -33,6 +33,7 @@
     body {
         font-family: Ubuntu;
         font-size: 11px;
+        color: #333333;
     }
 
 
@@ -40,22 +41,32 @@
         size: a4 portrait; 
         @frame header_frame {
             -pdf-frame-content: header_content; 
-            -pdf-frame-border: 1;
-            left: 10pt; width: 512pt; top: 20pt; height: 90pt;
+            left: 0pt; width: 595pt; top: 0pt; height: 910pt;
         }
         @frame content_frame {
             -pdf-frame-content: main_content; 
-            left: 10pt; width: 512pt; top: 140pt; height: 455pt;
-            -pdf-frame-border: 1;
+            left: 0pt; width: 595pt; top: 430pt; height: 455pt;
+            /* -pdf-frame-border: 1; */
+            text-align: center;
         }
         @frame footer_frame {
             -pdf-frame-content: footer_content;
-            left: 10pt; width: 512pt; top: 752pt; height: 20pt;
-            -pdf-frame-border: 1;
+            left: 0pt; width: 572pt; top: 702pt; height: 20pt;
+            /* -pdf-frame-border: 1; */
         }
     }
     .center-text {
         text-align: center;
+    }
+    #main_content {
+        font-size: 40px; 
+        color: #333333;
+    }
+    .small {
+        font-size: 28px;
+    }
+    .very-small {
+        font-size: 21px;
     }
 </style>
 
@@ -63,15 +74,43 @@
 
 <body>
     <div id="header_content" class="center-text" >
-        <img src="http://127.0.0.1:8000{{ event.logo.url }}">
+        <img src="http://127.0.0.1:8000/static/img/notrollsallowed_background.png">
         </div>
 
 
-    <div id="footer_content">Our sponsor logos</div>
+        <div id="footer_content" class="small center-text">
+            <div style="text-align: center;"><b>NoTrollsAllowed</b>
+                organizatoriai, dalyviai ir remėjai</div>
+            <div style="vertical-align: middle;">
+                &nbsp;
+            <img src="http://127.0.0.1:8000/static/img/visma.png" width="130px">
+                &nbsp;
+            <img src="http://127.0.0.1:8000/static/img/nfq.png" width="130px">
+                &nbsp;
+            <img src="http://127.0.0.1:8000/static/img/eskimi.png" width="130px">
+                &nbsp;
+            <img src="http://127.0.0.1:8000/static/img/estina.png" width="130px">
+                &nbsp;
+            <img src="http://127.0.0.1:8000/static/img/ito.png" width="120px">
+                &nbsp;
+            <img src="http://127.0.0.1:8000/static/img/akl.png" width="130px">
+            </div>
+            </div>
 
     <div id="main_content" class="center-text">
-        {{ participant.username }}
-        <i>{{ participant.topic }}</i>
+        <h1 style="padding-top: -20px;">DĖKOJAME</h1>
+        <div class="small" style="padding-top: -30px; padding-right: 50px; padding-left: 50px;">
+        <p>
+        <b>{{ participant.username }}</b></br>
+        <span class="small">
+        dalyvavus veiklių žmonių suvažiavime <b style="font-size: 35px;">NoTrollsAllowed</b> ir
+        pristačius </span><br> 
+    "<b>{{ participant.topic }}</b>"<br> <span class="small">pranešimą.</span>
+        </p>
+        </div>
+
+
+
     </div>
 </body>
 </html>

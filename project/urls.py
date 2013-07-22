@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^events/(?P<event_pk>\d*)/add/$', ParticipantCreate.as_view()),
     url(r'^events/(?P<event_pk>\d*)/participant/(?P<pk>\d*)/delete/$', ParticipantDelete.as_view()),
     url(r'^events/(?P<event_pk>\d*)/participant/(?P<pk>\d*)/pdf/$', Certificate.as_view()),
+    url(r'^events/(?P<event_pk>\d*)/participant/(?P<pk>\d*)/name/$', participant_name),
 )
 
 urlpatterns += staticfiles_urlpatterns()

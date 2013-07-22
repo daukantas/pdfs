@@ -1,6 +1,6 @@
 #! coding: utf-8
 from django.shortcuts import render_to_response
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic import ListView
 from django.views.generic import View
 from django.views.generic.edit import CreateView, DeleteView
@@ -14,6 +14,10 @@ from django.http import HttpResponse
 from cgi import escape
 import settings
 
+
+def participant_name(request, event_pk, pk):
+    participant = Participant.objects.get(pk=pk)
+    return HttpResponse(participant.username)
 
 def index(request):
     return HttpResponseRedirect('/events/') # render_to_response('index.html', {})
